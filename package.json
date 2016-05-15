@@ -1,7 +1,7 @@
 {
-  "name": "React-Hot-Dev-Starter",
+  "name": "Bill",
   "version": "1.0.0",
-  "description": "A skeleton project for starting with a hot-loading development react project server",
+  "description": "Displays a customer's bill from a JSON endpoint ",
   "main": "index.html",
   "scripts": {
     "start": "npm run build && node prodServer.js",
