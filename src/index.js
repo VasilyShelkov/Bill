@@ -1,16 +1,15 @@
 import 'babel-polyfill';
 import ReactDOM from 'react-dom';
 import React from 'react';
-//import { Router, Route, browserHistory } from 'react-router';
-//import routes from '???';
-
+import BillApp from './BillApp';
 const rootElement = document.getElementById('root');
 
 let render = () => {
-	const App = require('./components/App').default;
-	ReactDOM.render(<App text="example" />, rootElement);
-  //<Router history={browserHistory} routes={routes}/>, document.getElementById('app'));
-}
+  ReactDOM.render(
+		<BillApp />,
+		rootElement
+	);
+};
 
 if (module.hot) {
   // Support hot reloading of components
@@ -33,9 +32,9 @@ if (module.hot) {
     }
   };
 
-  module.hot.accept('./components/App', () => {
+  module.hot.accept('./BillApp', () => {
     setTimeout(render);
   });
-};
+}
 
 render();

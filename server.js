@@ -7,8 +7,12 @@ module.exports = (app, port) => {
     path.join(__dirname, 'node_modules', 'bootstrap', 'dist', 'css')
   ));
 
+  app.get('/', (req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+  });
+
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public', 'index.html'));
+    res.status(404).sendFile('404.html', { root: 'public' });
   });
 
   app.listen(port, (err) => {
