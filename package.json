@@ -32,10 +32,8 @@
     "babel-polyfill": "^6.8.0",
     "bootstrap": "^4.0.0-alpha.2",
     "express": "^4.13.4",
-    "history": "^2.1.1",
     "react": "^15.0.2",
-    "react-dom": "^15.0.2",
-    "react-router": "^2.4.0"
+    "react-dom": "^15.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.8.0",
