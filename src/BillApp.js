@@ -40,11 +40,7 @@ class BillApp extends Component {
                   billFrom={selectedStatement.overview.period.from}
                   billTo={selectedStatement.overview.period.to}
                   total={selectedStatement.overview.total}
-                  chargeBreakdown={selectedStatement.charges.map(charge => ({
-                    category: charge.category,
-                    color: charge.color,
-                    total: charge.breakdown.total,
-                  }))}
+                  chargeBreakdown={selectedStatement.charges}
                 />
                 <ChargeList />
               </div>
