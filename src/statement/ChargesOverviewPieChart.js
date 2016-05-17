@@ -9,7 +9,7 @@ class ChargesOverviewPieChart extends Component {
 
     const pie = d3.layout.pie()
       .sort(null)
-      .value(d => d.total);
+      .value(d => d.breakdown.total);
 
     const arc = d3.svg.arc()
       .innerRadius(radius - 100)
@@ -24,17 +24,11 @@ class ChargesOverviewPieChart extends Component {
 
     console.log(arc);
     svg.selectAll('path')
-      .data(pie([
-      	{color: '#1f77b4', total:10},
-        {color: '#aec7e8', total:10},
-        {color: '#ff7f0e', total:10}
-      ]))
+      .data(pie(this.props.charges))
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', d => {
-        return d.data.color
-      })
+      .attr('fill', d => d.data.color);
   }
 
   render() {
