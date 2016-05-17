@@ -1,12 +1,33 @@
 import 'babel-polyfill';
 import ReactDOM from 'react-dom';
 import React from 'react';
+import { combineReducers, compose, applyMiddleware, createStore } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { Provider } from 'react-redux';
+import statementsReducer from './statement/statementsReducer';
 import BillApp from './BillApp';
+
+const bills = combineReducers({
+  bill: statementsReducer,
+});
+
+const middlewares = [thunkMiddleware];
+
+const finalStore = createStore(
+  bills,
+  compose(
+    applyMiddleware(...middlewares),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
+);
+
 const rootElement = document.getElementById('root');
 
 let render = () => {
   ReactDOM.render(
-		<BillApp />,
+    <Provider store={finalStore}>
+      <BillApp />
+    </Provider>,
 		rootElement
 	);
 };
