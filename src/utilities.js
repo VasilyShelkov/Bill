@@ -32,3 +32,6 @@ export const makeGetHeader = () => ({
     'Content-Type': 'application/json',
   },
 });
+
+export const capitalizeAndSpaceString = (camelCaseString) =>
+  camelCaseString.charAt(0).toUpperCase() + camelCaseString.replace(/([A-Z])/g, ' $1').substr(1);
