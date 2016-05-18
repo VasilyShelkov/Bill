@@ -23,7 +23,7 @@ describe('#statementsReducer', () => {
   });
 
   it('should recieve and transform statement with id', () => {
-    const categoryColors = d3.scale.category20();
+    const categoryColors = d3.scale.category10();
 
     const stateBefore = {
       statements: [{ id: 0, fetching: true, }],

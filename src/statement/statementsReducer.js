@@ -30,7 +30,7 @@ const statementReducer = (state = {}, action) => {
       fetching: true,
     };
   case RECEIVE_STATEMENT: {
-    const categoryColors = d3.scale.category20();
+    const categoryColors = d3.scale.category10();
 
     if (state.id !== action.id) {
       return state;
