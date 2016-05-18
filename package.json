@@ -2,7 +2,7 @@
   "name": "Bill",
   "version": "1.0.0",
   "description": "Displays a customer's bill from a JSON endpoint ",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
     "start": "npm run build && node prodServer.js",
     "build": "webpack --config webpack.config.prod.js --progress --profile --colors",
