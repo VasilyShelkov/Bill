@@ -1,6 +1,6 @@
 import React from 'react';
 import d3 from 'd3';
-import { capitalizeAndSpaceString } from '../utilities';
+import { capitalizeAndSpaceString, splitCostFromItem, groupCostsOfSameItems } from '../utilities';
 
 const ChargeList = ({ charges }) => (
   <div className="row">
@@ -55,41 +55,9 @@ const ChargeSection = ({ category, color, total, breakdown }) => (
 
 const categoryColors = d3.scale.category20();
 const SingleCategoryBreakdown = ({ name, breakdown, sectionTotal, }) => {
-  const categoriesWithCostSplit = breakdown.map(chargeItem => ({
-    item: Object.keys(chargeItem).reduce((itemWithoutCostKey, currentKey) => {
-      if (currentKey !== 'cost') {
-        return {
-          ...itemWithoutCostKey,
-          [currentKey]: chargeItem[currentKey]
-        };
-      }
+  const categoriesWithCostSplit = splitCostFromItem(breakdown);
 
-      return itemWithoutCostKey;
-    }, {}),
-    cost: chargeItem.cost
-  }));
-
-  const aggregatedCosts = categoriesWithCostSplit.reduce((breakdownCategories, currentItem) => {
-    const indexOfCategory = breakdownCategories.findIndex(categoryItem =>
-      JSON.stringify(categoryItem.item) === JSON.stringify(currentItem.item)
-    );
-
-    if (indexOfCategory !== -1) {
-      return [
-        ...breakdownCategories.slice(0, indexOfCategory),
-        {
-          ...breakdownCategories[indexOfCategory],
-          cost: breakdownCategories[indexOfCategory].cost + currentItem.cost,
-        },
-        ...breakdownCategories.slice(indexOfCategory + 1),
-      ];
-    }
-
-    return [
-      ...breakdownCategories,
-      currentItem
-    ];
-  }, []);
+  const aggregatedCosts = groupCostsOfSameItems(categoriesWithCostSplit);
 
   const coloredBreakdown = categoriesWithCostSplit.map(category => {
     const categoryColor = categoryColors(aggregatedCosts.findIndex(categoryItem =>
@@ -134,7 +102,7 @@ const SingleCategoryBreakdown = ({ name, breakdown, sectionTotal, }) => {
   );
 };
 
-const MultiCategoryBreakdown = ({ breakdown, sectionTotal}) => (
+const MultiCategoryBreakdown = ({ breakdown, sectionTotal }) => (
   <div>
     <div className="row">
       <div style={{ width: '100%' }}>
