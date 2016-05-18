@@ -41,7 +41,7 @@ const ChargeSection = ({ category, color, total, breakdown }) => (
       </div>
       {
         breakdown.length > 1 ?
-          <MultiCategoryBreakdown breakdown={breakdown} sectionTotal={total} />
+          <MultiCategoryBreakdown breakdown={breakdown} sectionTotal={total}/>
         :
           <SingleCategoryBreakdown
             name={breakdown[0].breakdownName}
@@ -54,7 +54,7 @@ const ChargeSection = ({ category, color, total, breakdown }) => (
 );
 
 const categoryColors = d3.scale.category20();
-const SingleCategoryBreakdown = ({ name, breakdown, sectionTotal }) => {
+const SingleCategoryBreakdown = ({ name, breakdown, sectionTotal, }) => {
   const categoriesWithCostSplit = breakdown.map(chargeItem => ({
     item: Object.keys(chargeItem).reduce((itemWithoutCostKey, currentKey) => {
       if (currentKey !== 'cost') {
@@ -134,7 +134,7 @@ const SingleCategoryBreakdown = ({ name, breakdown, sectionTotal }) => {
   );
 };
 
-const MultiCategoryBreakdown = ({ breakdown, sectionTotal }) => (
+const MultiCategoryBreakdown = ({ breakdown, sectionTotal}) => (
   <div>
     <div className="row">
       <div style={{ width: '100%' }}>

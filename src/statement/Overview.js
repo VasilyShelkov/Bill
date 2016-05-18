@@ -20,12 +20,12 @@ const Overview = ({ generated, due, billFrom, billTo, total, chargeBreakdown }) 
       </div>
     </div>
     <div className="row">
-      <ChargesOverviewPieChart charges={chargeBreakdown} height={300} />
+      <ChargesOverviewPieChart charges={chargeBreakdown} height={400} />
       <div
-        className="ui center aligned large header"
+        className="ui center aligned icon large header"
         style={{ color: moment(due).isSameOrBefore(moment()) ? 'red' : 'green' }}
       >
-        £{total}
+        <i className="small payment icon"></i>£{total}
         <div>to be payed by {moment(due).fromNow()}</div>
       </div>
     </div>
