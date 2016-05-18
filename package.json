@@ -2,16 +2,11 @@
   "name": "Bill",
   "version": "1.0.0",
   "description": "Displays a customer's bill from a JSON endpoint ",
-  "main": "prodServer.js",
   "scripts": {
     "start": "npm run build && node prodServer.js",
     "build": "webpack --config webpack.config.prod.js --progress --profile --colors",
     "dev": "node devServer.js",
     "test": "NODE_ENV=test mocha './src/**/*.spec.js' --compilers js:babel-core/register"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VasilyShelkov/React-Hot-Dev-Starter.git"
   },
   "keywords": [
     "node",
@@ -22,6 +17,10 @@
     "babel6",
     "eslint"
   ],
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
   "author": "Vasily Shelkov",
   "license": "MIT",
   "bugs": {
@@ -61,8 +60,9 @@
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.0.2",
     "redbox-react": "^1.2.4",
-    "style-loader": "^0.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
-  }
+  },
+  "private": true,
+  "main": "prodServer.js"
 }
