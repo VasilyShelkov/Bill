@@ -3,7 +3,7 @@ import moment from 'moment';
 import ChargesOverviewPieChart from './ChargesOverviewPieChart';
 
 const Overview = ({ generated, due, billFrom, billTo, total, chargeBreakdown }) => (
-  <div>
+  <div className="row">
     <div className="ui raised segment">
       <div className="row">
         <div className="ui center aligned large header">
@@ -19,8 +19,10 @@ const Overview = ({ generated, due, billFrom, billTo, total, chargeBreakdown }) 
         </div>
       </div>
     </div>
-    <div className="ui raised segment">
-      <ChargesOverviewPieChart charges={chargeBreakdown} height={300} />
+    <div className="ui raised segment" style={{ height: 300 }}>
+      <div className="row">
+        <ChargesOverviewPieChart charges={chargeBreakdown} height={300} />
+      </div>
     </div>
   </div>
 );

@@ -34,14 +34,14 @@ class BillApp extends Component {
               </div>
             :
               <div>
-                {/*<Overview
+                <Overview
                   generated={selectedStatement.overview.generated}
                   due={selectedStatement.overview.due}
                   billFrom={selectedStatement.overview.period.from}
                   billTo={selectedStatement.overview.period.to}
                   total={selectedStatement.overview.total}
                   chargeBreakdown={selectedStatement.charges}
-                />*/}
+                />
                 <ChargeList charges={selectedStatement.charges} />
               </div>
           }
