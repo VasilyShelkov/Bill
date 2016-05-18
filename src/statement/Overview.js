@@ -19,9 +19,14 @@ const Overview = ({ generated, due, billFrom, billTo, total, chargeBreakdown }) 
         </div>
       </div>
     </div>
-    <div className="ui raised segment" style={{ height: 300 }}>
-      <div className="row">
-        <ChargesOverviewPieChart charges={chargeBreakdown} height={300} />
+    <div className="row">
+      <ChargesOverviewPieChart charges={chargeBreakdown} height={300} />
+      <div
+        className="ui center aligned large header"
+        style={{ color: moment(due).isSameOrBefore(moment()) ? 'red' : 'green' }}
+      >
+        £{total}
+        <div>to be payed by {moment(due).fromNow()}</div>
       </div>
     </div>
   </div>
